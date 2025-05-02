@@ -9,8 +9,6 @@ Original file is located at
 
 import pandas as pd
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 car=pd.read_csv('/content/dataset.csv')
 
@@ -97,7 +95,6 @@ car.drop(['Unnamed: 0'],axis=1,inplace=True)
 
 car.columns
 
-sns.pairplot(car)
 
 # prompt: correlation metrix  for car value exclude location, fuel type, owner tyoe, transmission, Manufacturer
 
@@ -111,11 +108,6 @@ correlation_matrix = car[cols_for_correlation].corr()
 # Display the correlation matrix
 print(correlation_matrix)
 
-# You can also visualize the correlation matrix using a heatmap
-plt.figure(figsize=(10, 8))
-sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
-plt.title('Correlation Matrix')
-plt.show()
 
 # prompt: introduce new colun of age whivh show current age of car regarding current year-Year
 
@@ -128,15 +120,6 @@ def calculate_age(year):
 
 car['Age'] = car['Year'].apply(calculate_age)
 
-# prompt: generate histogram for Manufacturer count
-
-plt.figure(figsize=(10, 6))
-sns.countplot(x='Manufacturer', data=car)
-plt.title('Manufacturer Count')
-plt.xlabel('Manufacturer')
-plt.ylabel('Count')
-plt.xticks(rotation=90)  # Rotate x-axis labels for better readability
-plt.show()
 
 # prompt: encode Fuel_Type, Transmission, Owner type,Manucturer
 
